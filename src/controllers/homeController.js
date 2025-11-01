@@ -1,11 +1,14 @@
 const getHomePage = (req, res) => {
   res.render("home.ejs");
 };
-const getAboutPage = (req, res) => {
-  res.send("This is the about page.");
+
+const postCreateUser = (req, res) => {
+  console.log(">>>> check res body", req.body);
+  // Logic to create a new user
+  res.send("User created successfully.");
 };
 
 module.exports = {
   getHomePage,
-  getAboutPage,
+  postCreateUser,
 };

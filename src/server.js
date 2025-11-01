@@ -10,13 +10,15 @@ const connection = require("./config/database");
 // config template engine
 configViewEngine(app);
 
+app.use(express.json()); // for json
+app.use(express.urlencoded({ extended: true }));
+
 // declare routes
 app.use("/", webRoutes);
 
 // A simple SELECT query
 connection.query("SELECT * FROM Users", function (err, results, fields) {
   console.log(results); // results contains rows returned by server
-  console.log(fields); // fields contains extra meta data about results, if available
 });
 
 app.listen(port, () => {
