@@ -8,7 +8,9 @@ const getHomePage = async (req, res) => {
 const getCreatePage = (req, res) => {
   res.render("create.ejs");
 };
-
+const getUpdatePage = (req, res) => {
+  res.render("edit.ejs");
+};
 const postCreateUser = async (req, res) => {
   let { email, name, city } = req.body;
   const [results, fields] = await connection.query(
@@ -22,4 +24,5 @@ module.exports = {
   getHomePage,
   postCreateUser,
   getCreatePage,
+  getUpdatePage,
 };
