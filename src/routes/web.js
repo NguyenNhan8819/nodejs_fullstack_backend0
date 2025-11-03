@@ -12,7 +12,7 @@ router.get("/", getHomePage);
 // Define route for create page
 router.get("/create", getCreatePage);
 // Define route for Update User page
-router.get("/update", getUpdatePage);
+router.get("/update/:id", getUpdatePage);
 
 // define the about route
 router.post("/create-user", postCreateUser);

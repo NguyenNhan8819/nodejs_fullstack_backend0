@@ -9,6 +9,8 @@ const getCreatePage = (req, res) => {
   res.render("create.ejs");
 };
 const getUpdatePage = (req, res) => {
+  const userid = req.params.id;
+  console.log(">>> check req.params: ", req.params, userid);
   res.render("edit.ejs");
 };
 const postCreateUser = async (req, res) => {
