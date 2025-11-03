@@ -2,18 +2,21 @@ const connection = require("../config/database");
 const getHomePage = (req, res) => {
   res.render("home.ejs");
 };
+const getCreatePage = (req, res) => {
+  res.render("create.ejs");
+};
 
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
   let { email, name, city } = req.body;
-  connection.query("INSERT INTO Users (email, name, city) VALUES (?, ?, ?)", [
-    email,
-    name,
-    city,
-  ]);
+  const [results, fields] = await connection.query(
+    "INSERT INTO Users (email, name, city) VALUES (?, ?, ?)",
+    [email, name, city]
+  );
   res.send("User created successfully.");
 };
 
 module.exports = {
   getHomePage,
   postCreateUser,
+  getCreatePage,
 };
