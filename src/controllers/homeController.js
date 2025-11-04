@@ -1,8 +1,11 @@
 const connection = require("../config/database");
-const { getAllUsers, getUserById } = require("../services/CRUDService");
+const {
+  getAllUsers,
+  getUserById,
+  updateUserById,
+} = require("../services/CRUDService");
 const getHomePage = async (req, res) => {
   let results = await getAllUsers();
-  console.log(">>> check results: ", results);
   res.render("home.ejs", { dataUsers: results });
 };
 const getCreatePage = (req, res) => {
@@ -11,7 +14,6 @@ const getCreatePage = (req, res) => {
 const getUpdatePage = async (req, res) => {
   const userId = req.params.id;
   let user = await getUserById(userId);
-  console.log(">>> check user: ", user);
   res.render("edit.ejs", { userInfo: user });
 };
 const postCreateUser = async (req, res) => {
@@ -23,9 +25,16 @@ const postCreateUser = async (req, res) => {
   res.send("User created successfully.");
 };
 
+const postUpdateUser = async (req, res) => {
+  let { userID, email, name, city } = req.body;
+  await updateUserById(userID, email, name, city);
+  res.redirect("/"); // quay về trang chủ sau khi cập nhật thành công
+};
+
 module.exports = {
   getHomePage,
   postCreateUser,
   getCreatePage,
   getUpdatePage,
+  postUpdateUser,
 };

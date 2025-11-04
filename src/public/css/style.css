@@ -111,3 +111,6 @@ th {
   background-color: #04aa6d;
   color: white;
 }
+.no-display {
+  display: none;
+}

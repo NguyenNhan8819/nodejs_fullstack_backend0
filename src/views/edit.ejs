@@ -13,7 +13,10 @@
       <a href="#about">About</a>
     </div>
 
-    <form action="/create-user" method="post">
+    <form action="/update-user" method="post">
+      <div class="no-display">
+        <input type="text" id="id" name="userID" value="<%= userInfo.id %>" />
+      </div>
       <label for="email">Email:</label>
       <input
         type="email"
